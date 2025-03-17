@@ -9,7 +9,9 @@ android {
     namespace = "com.example.niise_mobile"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "29.0.13113456"
-
+    // ndkVersion = flutter.ndkVersion
+    //test remove androidfolder tracking
+    
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
