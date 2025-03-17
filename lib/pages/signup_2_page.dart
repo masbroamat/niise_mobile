@@ -15,23 +15,30 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'SF Pro Text',
       ),
-      home: const ProfileCreationScreen(),
+      home: const Signup2Page(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class ProfileCreationScreen extends StatefulWidget {
-  const ProfileCreationScreen({super.key});
+class Signup2Page extends StatefulWidget {
+  const Signup2Page({super.key});
 
   @override
-  State<ProfileCreationScreen> createState() => _ProfileCreationScreenState();
+  State<Signup2Page> createState() =>
+      _ProfileCreationScreenState();
 }
 
-class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
+class _ProfileCreationScreenState
+    extends State<Signup2Page> {
   int _selectedOption = 0;
   // Updated color as requested
-  final Color lightBlue = const Color.fromARGB(255, 43, 90, 155);
+  final Color lightBlue = const Color.fromARGB(
+    255,
+    43,
+    90,
+    155,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +48,17 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
           onPressed: () {
             // Handle back navigation
           },
         ),
         title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment:
+              CrossAxisAlignment.start,
           children: const [
             Text(
               'Step 2',
@@ -70,9 +81,12 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16.0,
+          ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment:
+                CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 16),
               const Text(
@@ -90,16 +104,28 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
                   Expanded(
                     child: _buildDocumentOptionButton(
                       'ID Document',
-                      isSelected: _selectedOption == 1,
-                      onTap: () => setState(() => _selectedOption = 1),
+                      isSelected:
+                          _selectedOption == 1,
+                      onTap:
+                          () => setState(
+                            () =>
+                                _selectedOption =
+                                    1,
+                          ),
                     ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: _buildDocumentOptionButton(
                       'Passport',
-                      isSelected: _selectedOption == 2,
-                      onTap: () => setState(() => _selectedOption = 2),
+                      isSelected:
+                          _selectedOption == 2,
+                      onTap:
+                          () => setState(
+                            () =>
+                                _selectedOption =
+                                    2,
+                          ),
                     ),
                   ),
                 ],
@@ -110,15 +136,18 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
               _buildStepCard(
                 step: 1,
                 title: 'Scan your passport',
-                description: 'Place your document in the rectangle',
+                description:
+                    'Place your document in the rectangle',
                 icon: Icons.document_scanner,
               ),
               const SizedBox(height: 16),
               // Manual entry option
               _buildStepCard(
                 step: 2,
-                title: 'Manually Entry (Non MRZ document)',
-                description: 'Please manually entry your passport details and upload your passport photo',
+                title:
+                    'Manually Entry (Non MRZ document)',
+                description:
+                    'Please manually entry your passport details and upload your passport photo',
                 icon: Icons.settings,
               ),
               const SizedBox(height: 16),
@@ -126,7 +155,8 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
               _buildStepCard(
                 step: 3,
                 title: 'Take Selfie',
-                description: 'Position your face at circle',
+                description:
+                    'Position your face at circle',
                 icon: Icons.face,
               ),
               const SizedBox(height: 16),
@@ -134,22 +164,31 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
               _buildStepCard(
                 step: 4,
                 title: 'Liveness Detection',
-                description: 'Active and passive liveness checks',
+                description:
+                    'Active and passive liveness checks',
                 icon: Icons.wifi_tethering,
               ),
               const Spacer(),
               // Start button
               Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
+                padding: const EdgeInsets.only(
+                  bottom: 20.0,
+                ),
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle start button press
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: lightBlue,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding:
+                        const EdgeInsets.symmetric(
+                          vertical: 16,
+                        ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius:
+                          BorderRadius.circular(
+                            8,
+                          ),
                     ),
                   ),
                   child: const Text(
@@ -169,33 +208,58 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
     );
   }
 
-  Widget _buildDocumentOptionButton(String text, {required bool isSelected, required VoidCallback onTap}) {
+  Widget _buildDocumentOptionButton(
+    String text, {
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        duration: const Duration(
+          milliseconds: 150,
+        ),
+        padding: const EdgeInsets.symmetric(
+          vertical: 16,
+        ),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.grey.shade300 : Colors.grey.shade200,
+          color:
+              isSelected
+                  ? Colors.grey.shade300
+                  : Colors.grey.shade200,
           borderRadius: BorderRadius.circular(8),
-          border: isSelected
-              ? Border.all(color: lightBlue, width: 2)
-              : null,
-          boxShadow: isSelected 
-              ? [BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                  offset: const Offset(0, 2),
-                )]
-              : null,
+          border:
+              isSelected
+                  ? Border.all(
+                    color: lightBlue,
+                    width: 2,
+                  )
+                  : null,
+          boxShadow:
+              isSelected
+                  ? [
+                    BoxShadow(
+                      color: Colors.black
+                          .withOpacity(0.1),
+                      spreadRadius: 1,
+                      blurRadius: 3,
+                      offset: const Offset(0, 2),
+                    ),
+                  ]
+                  : null,
         ),
         child: Text(
           text,
           style: TextStyle(
             fontSize: 14,
-            fontWeight: isSelected ? FontWeight.bold : FontWeight.w500,
-            color: isSelected ? lightBlue : Colors.black87,
+            fontWeight:
+                isSelected
+                    ? FontWeight.bold
+                    : FontWeight.w500,
+            color:
+                isSelected
+                    ? lightBlue
+                    : Colors.black87,
           ),
           textAlign: TextAlign.center,
         ),
@@ -210,7 +274,10 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
     required IconData icon,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 12,
+      ),
       decoration: BoxDecoration(
         color: lightBlue,
         borderRadius: BorderRadius.circular(8),
@@ -233,7 +300,8 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
           const SizedBox(width: 16),
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment:
+                  CrossAxisAlignment.start,
               children: [
                 Text(
                   '$step. $title',
