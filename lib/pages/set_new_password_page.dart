@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SetNewPasswordPage extends StatefulWidget {
+  const SetNewPasswordPage({super.key});
+
   @override
   _SetNewPasswordPageState createState() =>
       _SetNewPasswordPageState();
@@ -18,7 +20,7 @@ class _SetNewPasswordPageState
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/immigration.jpg', // Change this to your background image
+              'assets/images/imigresen.png', // Change this to your background image
               fit: BoxFit.cover,
             ),
           ),

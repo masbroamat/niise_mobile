@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
             (context) => const SettingsPage(),
         '/dlc': (context) => const DlcPage(),
         '/setnewpassword':
-            (context) => SetNewPasswordPage(),
+            (context) =>
+                const SetNewPasswordPage(),
         '/forgot-password':
             (context) => const ForgotPassword(),
         '/verification-forgot-password':
