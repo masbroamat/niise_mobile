@@ -38,7 +38,12 @@ class OCRScreenState extends State<Signup3Page> {
             Icons.arrow_back,
             color: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              '/signup2',
+            );
+          },
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
