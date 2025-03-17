@@ -399,7 +399,7 @@ class _VerificationForgotPasswordState
                                       4) {
                                     Navigator.pushNamed(
                                       context,
-                                      '/login',
+                                      '/setnewpassword',
                                     );
                                   } else {
                                     // Show error or prompt to complete the code
@@ -413,11 +413,6 @@ class _VerificationForgotPasswordState
                                       ),
                                     );
                                   }
-
-                                  Navigator.pushNamed(
-                                    context,
-                                    '/setnewpassword',
-                                  );
                                 },
                                 child: const Text(
                                   'Continue',
