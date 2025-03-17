@@ -47,7 +47,7 @@ class SettingsPageState extends State<SettingsPage> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 40.0),// Add spacing from bottom
+        padding: const EdgeInsets.only(bottom: 60.0), // Add spacing from bottom
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
@@ -62,10 +62,19 @@ class SettingsPageState extends State<SettingsPage> {
             ],
           ),
           child: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
+            items: [
+              BottomNavigationBarItem(
+                icon: _buildNavBarItem(Icons.home, isSelected: _selectedIndex == 0),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _buildNavBarItem(Icons.person, isSelected: _selectedIndex == 1),
+                label: '',
+              ),
+              BottomNavigationBarItem(
+                icon: _buildNavBarItem(Icons.settings, isSelected: _selectedIndex == 2),
+                label: '',
+              ),
             ],
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.blue,
@@ -109,8 +118,6 @@ class SettingsPageState extends State<SettingsPage> {
     );
   }
 
- 
-
   Widget _buildLanguageOption() {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -122,5 +129,20 @@ class SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
-}
 
+  Widget _buildNavBarItem(IconData icon, {bool isSelected = false}) {
+    return Container(
+      width: 40,
+      height: 40,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: isSelected ? Colors.blue.shade100 : Colors.transparent,
+      ),
+      child: Icon(
+        icon,
+        color: isSelected ? Colors.blue.shade800 : Colors.grey,
+        size: 28,
+      ),
+    );
+  }
+}
