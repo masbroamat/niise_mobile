@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SetNewPasswordPage extends StatelessWidget {
+  const SetNewPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +13,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class SetNewPasswordScreen extends StatefulWidget {
+class SetNewPasswordScreen
+    extends StatefulWidget {
   @override
-  _SetNewPasswordScreenState createState() => _SetNewPasswordScreenState();
+  _SetNewPasswordScreenState createState() =>
+      _SetNewPasswordScreenState();
 }
 
-class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+class _SetNewPasswordScreenState
+    extends State<SetNewPasswordScreen> {
+  final TextEditingController passwordController =
+      TextEditingController();
+  final TextEditingController
+  confirmPasswordController =
+      TextEditingController();
   bool isPasswordVisible = false;
   bool isConfirmPasswordVisible = false;
 
@@ -46,35 +48,51 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
             child: Container(
               width: double.infinity,
               padding: const EdgeInsets.all(20),
-              margin: const EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(
+                horizontal: 20,
+              ),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.9), // Slight Transparency
-                borderRadius: BorderRadius.circular(16),
+                color: Colors.white.withOpacity(
+                  0.9,
+                ), // Slight Transparency
+                borderRadius:
+                    BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black
+                        .withOpacity(0.1),
                     blurRadius: 10,
                     spreadRadius: 2,
                   ),
                 ],
               ),
               child: Column(
-                mainAxisSize: MainAxisSize.min, // Center Box Vertically
-                crossAxisAlignment: CrossAxisAlignment.start, // Align Left
+                mainAxisSize:
+                    MainAxisSize
+                        .min, // Center Box Vertically
+                crossAxisAlignment:
+                    CrossAxisAlignment
+                        .start, // Align Left
                 children: [
                   // Title & Back Button in the Same Row
                   Row(
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.arrow_back, color: Colors.black),
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                        ),
                         onPressed: () {},
                       ),
-                      const SizedBox(width: 30), // Small gap between arrow & text
+                      const SizedBox(
+                        width: 30,
+                      ), // Small gap between arrow & text
                       const Text(
                         'Set New Password',
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight:
+                              FontWeight.bold,
                         ),
                       ),
                     ],
@@ -85,7 +103,15 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                   const Center(
                     child: Text(
                       'Create an unique password.',
-                      style: TextStyle(fontSize: 14, color: Color.fromARGB(255, 44, 44, 44)),
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Color.fromARGB(
+                          255,
+                          44,
+                          44,
+                          44,
+                        ),
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -95,11 +121,13 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                   _buildPasswordField(
                     label: 'New Password',
                     hint: 'Enter New Password',
-                    controller: passwordController,
+                    controller:
+                        passwordController,
                     isVisible: isPasswordVisible,
                     onToggle: () {
                       setState(() {
-                        isPasswordVisible = !isPasswordVisible;
+                        isPasswordVisible =
+                            !isPasswordVisible;
                       });
                     },
                   ),
@@ -110,11 +138,14 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                   _buildPasswordField(
                     label: 'Confirm New Password',
                     hint: 'Re-enter New Password',
-                    controller: confirmPasswordController,
-                    isVisible: isConfirmPasswordVisible,
+                    controller:
+                        confirmPasswordController,
+                    isVisible:
+                        isConfirmPasswordVisible,
                     onToggle: () {
                       setState(() {
-                        isConfirmPasswordVisible = !isConfirmPasswordVisible;
+                        isConfirmPasswordVisible =
+                            !isConfirmPasswordVisible;
                       });
                     },
                   ),
@@ -125,15 +156,30 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 14, 39, 77),
-                      minimumSize: const Size(double.infinity, 50),
+                      backgroundColor:
+                          const Color.fromARGB(
+                            255,
+                            14,
+                            39,
+                            77,
+                          ),
+                      minimumSize: const Size(
+                        double.infinity,
+                        50,
+                      ),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius:
+                            BorderRadius.circular(
+                              8,
+                            ),
                       ),
                     ),
                     child: const Text(
                       'Save New Password',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
 
@@ -145,7 +191,10 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                       onPressed: () {},
                       child: const Text(
                         'Reset password later?',
-                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ),
@@ -161,16 +210,34 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
             child: ElevatedButton.icon(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(255, 76, 175, 125),
+                backgroundColor:
+                    const Color.fromARGB(
+                      255,
+                      76,
+                      175,
+                      125,
+                    ),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius:
+                      BorderRadius.circular(30),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
               ),
-              icon: const Icon(Icons.language, color: Colors.white, size: 18),
+              icon: const Icon(
+                Icons.language,
+                color: Colors.white,
+                size: 18,
+              ),
               label: const Text(
                 'ENG',
-                style: TextStyle(color: Colors.white, fontSize: 12),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                ),
               ),
             ),
           ),
@@ -179,7 +246,7 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
     );
   }
 
-   // Password Field Builder
+  // Password Field Builder
   Widget _buildPasswordField({
     required String label,
     required String hint,
@@ -188,11 +255,15 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
     required VoidCallback onToggle,
   }) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment:
+          CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
         ),
         const SizedBox(height: 5),
         TextField(
@@ -201,14 +272,24 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
           decoration: InputDecoration(
             hintText: hint,
             filled: true,
-            fillColor: Colors.transparent, // Transparent Background
+            fillColor:
+                Colors
+                    .transparent, // Transparent Background
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Colors.grey), // Light Border
+              borderRadius: BorderRadius.circular(
+                8,
+              ),
+              borderSide: const BorderSide(
+                color: Colors.grey,
+              ), // Light Border
             ),
             prefixIcon: const Icon(Icons.lock),
             suffixIcon: IconButton(
-              icon: Icon(isVisible ? Icons.visibility : Icons.visibility_off),
+              icon: Icon(
+                isVisible
+                    ? Icons.visibility
+                    : Icons.visibility_off,
+              ),
               onPressed: onToggle,
             ),
           ),
