@@ -270,8 +270,8 @@ class _HomePageState extends State<HomePage> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black
-                                  .withOpacity(
-                                    0.4,
+                                  .withValues(
+                                    alpha: 0.4,
                                   ), // Fixing incorrect withValues()
                               spreadRadius: 5,
                               blurRadius: 7,
@@ -581,8 +581,8 @@ class _HomePageState extends State<HomePage> {
                 sigmaY: 5.0,
               ),
               child: Container(
-                color: Colors.black.withOpacity(
-                  0.3,
+                color: Colors.black.withValues(
+                  alpha:0.3,
                 ),
               ),
             ),
@@ -618,7 +618,7 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 12,
                     fontFamily: 'Ramabhadra',
                     color: Colors.white
-                        .withOpacity(0.8),
+                        .withValues(alpha: 0.8),
                   ),
                 ),
               ],
@@ -674,7 +674,7 @@ Widget _buildQuickAccessCard(
       borderRadius: BorderRadius.circular(12),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.2),
+          color: Colors.black.withValues(alpha: 0.2),
           spreadRadius: 3,
           blurRadius: 6,
           offset: const Offset(0, 2),
