@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/login_page.dart';
+import 'package:niise_mobile/pages/verification_forgot_password_page.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
@@ -152,10 +154,8 @@ class _ForgotPasswordState
                                 print(
                                   "back button pressed",
                                 );
-                                Navigator.pushNamed(
-                                  context,
-                                  '/settings',
-                                );
+                                Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const LoginPage()),);
                               },
                               child: Icon(
                                 Icons.arrow_back,
@@ -417,14 +417,15 @@ class _ForgotPasswordState
 
                                   displayEmail();
 
-                                  Navigator.pushNamed(
-                                    context,
-                                    '/verification-forgot-password',
-                                    arguments: [
-                                      email,
-                                      phone,
-                                    ],
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => VerificationForgotPassword(),
+                                      settings: RouteSettings(
+                                        arguments: [email, phone], // Passing email and phone as arguments
+                                      ),
+                                    ),
                                   );
+
                                 },
                                 child: const Text(
                                   'Send Code',
@@ -448,10 +449,8 @@ class _ForgotPasswordState
                                 print(
                                   "go to home page",
                                 );
-                                Navigator.pushNamed(
-                                  context,
-                                  '/login',
-                                );
+                                Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const LoginPage()),);
                               },
                               child: const Text(
                                 'Back to Login Page?',

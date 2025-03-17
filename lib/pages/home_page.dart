@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:niise_mobile/pages/dlc_page.dart';
+import 'package:niise_mobile/pages/profile_page.dart';
+import 'package:niise_mobile/pages/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -249,10 +252,9 @@ class _HomePageState extends State<HomePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(
-                          context,
-                          '/dlc',
-                        ); // Navigate to '/dlc'
+                        Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const DlcPage()),
+                );// Navigate to '/dlc'
                       },
                       child: Container(
                         width: 98,
@@ -525,19 +527,17 @@ class _HomePageState extends State<HomePage> {
                       _buildNavBarItem(
                         Icons.person_outline,
                         onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            '/profile',
-                          );
+                          Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
                         },
                       ),
                       _buildNavBarItem(
                         Icons.settings_outlined,
                         onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            '/settings',
-                          );
+                          Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SettingsPage()),
+                );
                         },
                       ),
                     ],

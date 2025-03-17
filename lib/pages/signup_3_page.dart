@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/home_page.dart';
+import 'package:niise_mobile/pages/signup_2_page.dart';
 
 class Signup3Page extends StatefulWidget {
   const Signup3Page({super.key});
@@ -39,10 +41,9 @@ class OCRScreenState extends State<Signup3Page> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushNamed(
-              context,
-              '/signup2',
-            );
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Signup2Page()),
+                );
           },
         ),
         backgroundColor: Colors.transparent,
@@ -169,9 +170,8 @@ class OCRScreenState extends State<Signup3Page> {
                 GestureDetector(
                   onTap: () {
                     print("Container clicked!");
-                    Navigator.pushNamed(
-                      context,
-                      '/home',
+                    Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const HomePage()),
                     );
                   },
                   child: Container(

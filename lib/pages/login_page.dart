@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/forgot_password_page.dart';
 import 'package:niise_mobile/pages/signup_1_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -244,7 +245,10 @@ class LoginForm extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ForgotPassword()),);
+            },
             child: Text(
               "Forgot Password?",
               style: TextStyle(

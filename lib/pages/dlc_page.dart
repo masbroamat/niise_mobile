@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/home_page.dart';
 
 class DlcPage extends StatefulWidget {
   const DlcPage({super.key});
@@ -39,7 +40,9 @@ class _DlcPageState extends State<DlcPage> {
                     leading: IconButton(
                       icon: const Icon(Icons.arrow_back),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/home');  // Handle back button press
+                        Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const HomePage()),
+                ); // Handle back button press
                       },
                     ),
                   ),

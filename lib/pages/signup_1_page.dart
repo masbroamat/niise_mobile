@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/login_page.dart';
+import 'package:niise_mobile/pages/signup_2_page.dart';
 
 class Signup1Page extends StatefulWidget {
   const Signup1Page({super.key});
@@ -17,7 +19,9 @@ class _Signup1PageState extends State<Signup1Page> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Handle back button press
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
           },
         ),
         title: const Text(
@@ -79,7 +83,9 @@ class _Signup1PageState extends State<Signup1Page> {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
-                // Handle next button press
+                Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Signup2Page()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF1F3053),

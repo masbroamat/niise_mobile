@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
+import 'package:niise_mobile/pages/settings_page.dart';
 
 class SetNewPasswordPage extends StatelessWidget {
   const SetNewPasswordPage({super.key});
@@ -82,7 +82,10 @@ class _SetNewPasswordScreenState
                           Icons.arrow_back,
                           color: Colors.black,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SettingsPage()),);
+                        },
                       ),
                       const SizedBox(
                         width: 30,
@@ -154,7 +157,10 @@ class _SetNewPasswordScreenState
 
                   // Save Password Button
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SettingsPage()),);
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           const Color.fromARGB(

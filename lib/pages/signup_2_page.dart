@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/signup_1_page.dart';
+import 'package:niise_mobile/pages/signup_3_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -53,7 +55,9 @@ class _ProfileCreationScreenState
             color: Colors.black,
           ),
           onPressed: () {
-            // Handle back navigation
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Signup1Page()),
+                );
           },
         ),
         title: Column(
@@ -177,10 +181,9 @@ class _ProfileCreationScreenState
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle start button press
-                    Navigator.pushNamed(
-                      context,
-                      '/signup3',
-                    );
+                    Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Signup3Page()),
+                );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: lightBlue,

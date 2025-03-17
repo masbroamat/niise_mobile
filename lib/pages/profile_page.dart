@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/home_page.dart';
+import 'package:niise_mobile/pages/settings_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -18,9 +20,11 @@ class _ProfilePageState extends State<ProfilePage> {
 
       // Navigate to the corresponding page
       if (index == 0) {
-        Navigator.pushNamed(context, '/home');
+        Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const HomePage()),);
       } else if (index == 2) {
-        Navigator.pushNamed(context, '/settings');
+        Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SettingsPage()),);
       }
     }
   }

@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/home_page.dart';
+import 'package:niise_mobile/pages/login_page.dart';
+import 'package:niise_mobile/pages/profile_page.dart';
+import 'package:niise_mobile/pages/set_new_password_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
   @override
-  SettingsPageState createState() =>
-      SettingsPageState();
+  SettingsPageState createState() => SettingsPageState();
 }
 
-class SettingsPageState
-    extends State<SettingsPage> {
+class SettingsPageState extends State<SettingsPage> {
   bool isBiometricEnabled = true;
   int _selectedIndex = 2; // Default to settings
 
@@ -21,17 +23,17 @@ class SettingsPageState
 
       // Navigate to the corresponding page
       if (index == 0) {
-        Navigator.pushNamed(context, '/home');
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
       } else if (index == 1) {
-        Navigator.pushNamed(context, '/profile');
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const ProfilePage()),
+        );
       } else if (index == 2) {
-        if (ModalRoute.of(
-              context,
-            )?.settings.name !=
-            '/settings') {
-          Navigator.pushNamed(
-            context,
-            '/settings',
+        if (ModalRoute.of(context)?.settings.name != '/settings') {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const SettingsPage()),
           );
         }
       }
@@ -62,24 +64,24 @@ class SettingsPageState
           children: [
             _buildSettingsItem(
               Icons.lock_outline,
-              '/forgot_password',
+              const SetNewPasswordPage(),
               "Change Password",
             ),
             _buildSettingsItem(
               Icons.support,
-              '',
+              null,
               "Support",
             ),
             _buildSettingsItem(
               Icons.info_outline,
-              '',
+              null,
               "About",
             ),
             _buildBiometricOption(),
             _buildLanguageOption(),
             _buildSettingsItem(
               Icons.logout,
-              '/',
+              const LoginPage(),
               "Log Out",
               iconColor: Colors.red,
             ),
@@ -98,9 +100,7 @@ class SettingsPageState
         left: 20,
         right: 20,
       ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 40,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 40),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
@@ -113,60 +113,36 @@ class SettingsPageState
         ],
       ),
       child: Row(
-        mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _buildNavBarItem(Icons.home, 0),
-          _buildNavBarItem(
-            Icons.person_outline,
-            1,
-          ),
-          _buildNavBarItem(
-            Icons.settings_outlined,
-            2,
-          ),
+          _buildNavBarItem(Icons.person_outline, 1),
+          _buildNavBarItem(Icons.settings_outlined, 2),
         ],
       ),
     );
   }
 
-  Widget _buildNavBarItem(
-    IconData icon,
-    int index,
-  ) {
+  Widget _buildNavBarItem(IconData icon, int index) {
     return GestureDetector(
-      onTap:
-          () => _onItemTapped(
-            index,
-          ), // Correct index handling
+      onTap: () => _onItemTapped(index), // Correct index handling
       child: Container(
         width: 40,
         height: 40,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color:
-              _selectedIndex == index
-                  ? Colors.blue.shade100
-                  : Colors.transparent,
+          color: _selectedIndex == index ? Colors.blue.shade100 : Colors.transparent,
         ),
         child: Icon(
           icon,
-          color:
-              _selectedIndex == index
-                  ? Colors.blue.shade800
-                  : Colors.grey,
+          color: _selectedIndex == index ? Colors.blue.shade800 : Colors.grey,
           size: 28,
         ),
       ),
     );
   }
 
-  Widget _buildSettingsItem(
-    IconData icon,
-    String path,
-    String title, {
-    Color iconColor = Colors.black,
-  }) {
+  Widget _buildSettingsItem(IconData icon, Widget? page, String title, {Color iconColor = Colors.black}) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -184,8 +160,10 @@ class SettingsPageState
           size: 16,
         ),
         onTap: () {
-          if (path.isNotEmpty) {
-            Navigator.pushNamed(context, path);
+          if (page != null) {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => page),
+            );
           }
         },
       ),
