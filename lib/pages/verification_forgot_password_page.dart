@@ -52,10 +52,9 @@ class _VerificationForgotPasswordState
 
   @override
   Widget build(BuildContext context) {
-    // Replace the email with the email that you have sent the code to
-    final String email =
+    final List<String> args =
         ModalRoute.of(context)?.settings.arguments
-            as String;
+            as List<String>;
 
     return Scaffold(
       body: GestureDetector(
@@ -278,18 +277,32 @@ class _VerificationForgotPasswordState
                               ),
                             ),
                             SizedBox(width: 4),
-                            Text(
-                              email,
-                              style: TextStyle(
-                                color: Color(
-                                  0xff00AA8F,
+
+                            args[0].isNotEmpty
+                                ? Text(
+                                  args[0],
+                                  style: TextStyle(
+                                    color: Color(
+                                      0xff00AA8F,
+                                    ),
+                                    fontSize: 12,
+                                    fontWeight:
+                                        FontWeight
+                                            .w500,
+                                  ),
+                                )
+                                : Text(
+                                  args[1],
+                                  style: TextStyle(
+                                    color: Color(
+                                      0xff00AA8F,
+                                    ),
+                                    fontSize: 12,
+                                    fontWeight:
+                                        FontWeight
+                                            .w500,
+                                  ),
                                 ),
-                                fontSize: 12,
-                                fontWeight:
-                                    FontWeight
-                                        .w500,
-                              ),
-                            ),
 
                             SizedBox(height: 24),
 

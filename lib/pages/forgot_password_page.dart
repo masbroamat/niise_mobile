@@ -24,10 +24,12 @@ class _ForgotPasswordState
   }
 
   String email = "";
+  String phone = "";
 
   void displayEmail() {
     setState(() {
       email = emailController.text;
+      phone = phoneNumController.text;
     });
   }
 
@@ -418,8 +420,10 @@ class _ForgotPasswordState
                                   Navigator.pushNamed(
                                     context,
                                     '/verification-forgot-password',
-                                    arguments:
-                                        email,
+                                    arguments: [
+                                      email,
+                                      phone,
+                                    ],
                                   );
                                 },
                                 child: const Text(
