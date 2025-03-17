@@ -4,13 +4,11 @@ class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
-  State<ProfilePage> createState() =>
-      _ProfilePageState();
+  State<ProfilePage> createState() => _ProfilePageState();
 }
 
-class _ProfilePageState
-    extends State<ProfilePage> {
-  int _selectedIndex = 3; // Default to settings
+class _ProfilePageState extends State<ProfilePage> {
+  int _selectedIndex = 1; // Set default index to Profile page
 
   void _onItemTapped(int index) {
     if (index != _selectedIndex) {
@@ -21,78 +19,25 @@ class _ProfilePageState
       // Navigate to the corresponding page
       if (index == 0) {
         Navigator.pushNamed(context, '/home');
-      } else if (index == 1) {
       } else if (index == 2) {
         Navigator.pushNamed(context, '/settings');
       }
     }
   }
 
-  Widget _buildBottomNavBar() {
-    return Container(
-      height: 60,
-      margin: const EdgeInsets.only(
-        bottom: 20,
-        left: 20,
-        right: 20,
-      ),
-      padding: const EdgeInsets.symmetric(
-        horizontal: 40,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10,
-            spreadRadius: 2,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
-        children: [
-          _buildNavBarItem(Icons.home, 0),
-          _buildNavBarItem(
-            Icons.person_outline,
-            1,
-          ),
-          _buildNavBarItem(
-            Icons.settings_outlined,
-            2,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavBarItem(
-    IconData icon,
-    int index,
-  ) {
+  Widget _buildNavBarItem(IconData icon, int index) {
     return GestureDetector(
-      onTap:
-          () => _onItemTapped(
-            index,
-          ), // Correct index handling
+      onTap: () => _onItemTapped(index),
       child: Container(
         width: 40,
         height: 40,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color:
-              _selectedIndex == index
-                  ? Colors.blue.shade100
-                  : Colors.transparent,
+          color: _selectedIndex == index ? Colors.blue.shade100 : Colors.transparent,
         ),
         child: Icon(
           icon,
-          color:
-              _selectedIndex == index
-                  ? Colors.blue.shade800
-                  : Colors.grey,
+          color: _selectedIndex == index ? Colors.blue.shade800 : Colors.grey,
           size: 28,
         ),
       ),
@@ -104,14 +49,14 @@ class _ProfilePageState
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'My Profile',
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Colors.black,
         ),
       ),
@@ -120,13 +65,12 @@ class _ProfilePageState
           children: [
             // Profile Section
             Container(
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(16),
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius:
-                    BorderRadius.circular(12),
-                boxShadow: [
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black12,
                     blurRadius: 5,
@@ -134,158 +78,99 @@ class _ProfilePageState
                   ),
                 ],
               ),
-              child: Stack(
+              child: Column(
                 children: [
-                  Column(
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.grey[300],
+                    child: const Icon(
+                      Icons.person,
+                      size: 60,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    "Hasanah Sari",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text("E 7278960", style: TextStyle(color: Colors.grey[600])),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Profile Picture Centered
-                      CircleAvatar(
-                        radius: 50,
-                        backgroundColor:
-                            Colors.grey[300],
-                        child: Icon(
-                          Icons.person,
-                          size: 60,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      SizedBox(height: 10),
-
-                      // Name
-                      Text(
-                        "Hasanah Sari",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight:
-                              FontWeight.bold,
-                        ),
-                      ),
-
-                      // ID Number
-                      Text(
-                        "E 7278960",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                      SizedBox(height: 10),
-
-                      // Contact Info
-                      Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment
-                                .center,
-                        children: [
-                          Icon(
-                            Icons.phone,
-                            size: 16,
-                            color:
-                                Colors.grey[600],
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            "0196531233",
-                            style: TextStyle(
-                              color:
-                                  Colors
-                                      .grey[700],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment:
-                            MainAxisAlignment
-                                .center,
-                        children: [
-                          Icon(
-                            Icons.email,
-                            size: 16,
-                            color:
-                                Colors.grey[600],
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            "hasanah01@gmail.com",
-                            style: TextStyle(
-                              color:
-                                  Colors
-                                      .grey[700],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
+                      Icon(Icons.phone, size: 16, color: Colors.grey[600]),
+                      const SizedBox(width: 4),
+                      Text("0196531233", style: TextStyle(color: Colors.grey[700])),
                     ],
                   ),
-
-                  // Edit Button (Positioned in the Top-Right Corner)
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.edit,
-                        color: Colors.grey[700],
-                      ),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.email, size: 16, color: Colors.grey[600]),
+                      const SizedBox(width: 4),
+                      Text("hasanah01@gmail.com", style: TextStyle(color: Colors.grey[700])),
+                    ],
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 16),
 
             // Profile Options
-            ProfileOption(
-              title: "My Latest E-Pass",
-              status: "Active",
-            ),
-            ProfileOption(
-              title: "Travel Document",
-              status: "Active",
-            ),
+            ProfileOption(title: "My Latest E-Pass", status: "Active"),
+            ProfileOption(title: "Travel Document", status: "Active"),
             ProfileOption(title: "Home Address"),
-            ProfileOption(
-              title: "Working Address",
-            ),
-            ProfileOption(
-              title: "Emergency Contact",
-            ),
-
-            SizedBox(height: 16),
+            ProfileOption(title: "Working Address"),
+            ProfileOption(title: "Emergency Contact"),
+            
+            const SizedBox(height: 16),
           ],
         ),
       ),
-
-      // Bottom Navigation Bar
-      bottomNavigationBar: _buildBottomNavBar(),
+      bottomNavigationBar: Container(
+        height: 60,
+        margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 40),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 10,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _buildNavBarItem(Icons.home, 0),
+            _buildNavBarItem(Icons.person, 1),
+            _buildNavBarItem(Icons.settings_outlined, 2),
+          ],
+        ),
+      ),
     );
   }
 }
 
-// Profile Option Widget
 class ProfileOption extends StatelessWidget {
   final String title;
   final String? status;
 
-  const ProfileOption({
-    super.key,
-    required this.title,
-    this.status,
-  });
+  const ProfileOption({super.key, required this.title, this.status});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 16,
-        vertical: 4,
-      ),
-      padding: EdgeInsets.all(12),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 5,
@@ -294,20 +179,16 @@ class ProfileOption extends StatelessWidget {
         ],
       ),
       child: Row(
-        mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Row(
             children: [
-              Text(
-                title,
-                style: TextStyle(fontSize: 16),
-              ),
+              Text(title, style: const TextStyle(fontSize: 16)),
               if (status != null) ...[
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 Text(
                   "($status)",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.green,
                     fontWeight: FontWeight.bold,
                   ),
@@ -315,7 +196,7 @@ class ProfileOption extends StatelessWidget {
               ],
             ],
           ),
-          Icon(
+          const Icon(
             Icons.arrow_forward_ios,
             size: 16,
             color: Colors.grey,

@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NIISE Mobile',
-      initialRoute: '/',
+      initialRoute: '/home',
       routes: {
         '/': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
             (context) => const ForgotPassword(),
         '/set_new_password':
             (context) =>
-                const SetNewPasswordPage(),
+                SetNewPasswordScreen(),
         '/verification_forgot_password':
             (context) =>
                 const VerificationForgotPassword(),
