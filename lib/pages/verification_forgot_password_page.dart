@@ -413,6 +413,11 @@ class _VerificationForgotPasswordState
                                       ),
                                     );
                                   }
+
+                                  Navigator.pushNamed(
+                                    context,
+                                    '/setnewpassword',
+                                  );
                                 },
                                 child: const Text(
                                   'Continue',

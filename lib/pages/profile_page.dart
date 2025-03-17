@@ -1,7 +1,103 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() =>
+      _ProfilePageState();
+}
+
+class _ProfilePageState
+    extends State<ProfilePage> {
+  int _selectedIndex = 3; // Default to settings
+
+  void _onItemTapped(int index) {
+    if (index != _selectedIndex) {
+      setState(() {
+        _selectedIndex = index;
+      });
+
+      // Navigate to the corresponding page
+      if (index == 0) {
+        Navigator.pushNamed(context, '/home');
+      } else if (index == 1) {
+      } else if (index == 2) {
+        Navigator.pushNamed(context, '/settings');
+      }
+    }
+  }
+
+  Widget _buildBottomNavBar() {
+    return Container(
+      height: 60,
+      margin: const EdgeInsets.only(
+        bottom: 20,
+        left: 20,
+        right: 20,
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 40,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment:
+            MainAxisAlignment.spaceBetween,
+        children: [
+          _buildNavBarItem(Icons.home, 0),
+          _buildNavBarItem(
+            Icons.person_outline,
+            1,
+          ),
+          _buildNavBarItem(
+            Icons.settings_outlined,
+            2,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavBarItem(
+    IconData icon,
+    int index,
+  ) {
+    return GestureDetector(
+      onTap:
+          () => _onItemTapped(
+            index,
+          ), // Correct index handling
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color:
+              _selectedIndex == index
+                  ? Colors.blue.shade100
+                  : Colors.transparent,
+        ),
+        child: Icon(
+          icon,
+          color:
+              _selectedIndex == index
+                  ? Colors.blue.shade800
+                  : Colors.grey,
+          size: 28,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -162,26 +258,7 @@ class ProfilePage extends StatelessWidget {
       ),
 
       // Bottom Navigation Bar
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person,
-              color: Colors.blue,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: '',
-          ),
-        ],
-      ),
+      bottomNavigationBar: _buildBottomNavBar(),
     );
   }
 }

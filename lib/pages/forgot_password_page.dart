@@ -154,7 +154,7 @@ class _ForgotPasswordState
                                 );
                                 Navigator.pushNamed(
                                   context,
-                                  '/login',
+                                  '/settings',
                                 );
                               },
                               child: Icon(

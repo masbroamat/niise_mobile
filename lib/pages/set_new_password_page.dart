@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SetNewPasswordScreen extends StatefulWidget {
+class SetNewPasswordPage extends StatefulWidget {
   @override
-  _SetNewPasswordScreenState createState() => _SetNewPasswordScreenState();
+  _SetNewPasswordPageState createState() =>
+      _SetNewPasswordPageState();
 }
 
-class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
+class _SetNewPasswordPageState
+    extends State<SetNewPasswordPage> {
   bool _isObscureNew = true;
   bool _isObscureConfirm = true;
 
@@ -19,19 +21,23 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
               'assets/images/immigration.jpg', // Change this to your background image
               fit: BoxFit.cover,
             ),
-          
           ),
           SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(height: 100),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
                   child: Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius:
+                          BorderRadius.circular(
+                            15,
+                          ),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black26,
@@ -41,63 +47,103 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                       ],
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment:
+                          CrossAxisAlignment
+                              .start,
                       children: [
                         Row(
                           children: [
                             IconButton(
-                              icon: Icon(Icons.arrow_back),
+                              icon: Icon(
+                                Icons.arrow_back,
+                              ),
                               onPressed: () {
-                                Navigator.pop(context);
+                                Navigator.pop(
+                                  context,
+                                );
                               },
                             ),
                             Text(
                               'Set New Password',
                               style: TextStyle(
                                 fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                                fontWeight:
+                                    FontWeight
+                                        .bold,
                               ),
                             ),
                           ],
                         ),
                         SizedBox(height: 10),
-                        Text('Create a unique password.',
-                            style: TextStyle(color: Colors.grey)),
+                        Text(
+                          'Create a unique password.',
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
                         SizedBox(height: 20),
-                        Text('New Password',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(
+                          'New Password',
+                          style: TextStyle(
+                            fontWeight:
+                                FontWeight.bold,
+                          ),
+                        ),
                         TextFormField(
-                          obscureText: _isObscureNew,
+                          obscureText:
+                              _isObscureNew,
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
-                            hintText: 'Enter New Password',
+                            prefixIcon: Icon(
+                              Icons.lock,
+                            ),
+                            hintText:
+                                'Enter New Password',
                             suffixIcon: IconButton(
-                              icon: Icon(_isObscureNew
-                                  ? Icons.visibility_off
-                                  : Icons.visibility),
+                              icon: Icon(
+                                _isObscureNew
+                                    ? Icons
+                                        .visibility_off
+                                    : Icons
+                                        .visibility,
+                              ),
                               onPressed: () {
                                 setState(() {
-                                  _isObscureNew = !_isObscureNew;
+                                  _isObscureNew =
+                                      !_isObscureNew;
                                 });
                               },
                             ),
                           ),
                         ),
                         SizedBox(height: 15),
-                        Text('Confirm New Password',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(
+                          'Confirm New Password',
+                          style: TextStyle(
+                            fontWeight:
+                                FontWeight.bold,
+                          ),
+                        ),
                         TextFormField(
-                          obscureText: _isObscureConfirm,
+                          obscureText:
+                              _isObscureConfirm,
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.lock),
-                            hintText: 'Re-enter New Password',
+                            prefixIcon: Icon(
+                              Icons.lock,
+                            ),
+                            hintText:
+                                'Re-enter New Password',
                             suffixIcon: IconButton(
-                              icon: Icon(_isObscureConfirm
-                                  ? Icons.visibility_off
-                                  : Icons.visibility),
+                              icon: Icon(
+                                _isObscureConfirm
+                                    ? Icons
+                                        .visibility_off
+                                    : Icons
+                                        .visibility,
+                              ),
                               onPressed: () {
                                 setState(() {
-                                  _isObscureConfirm = !_isObscureConfirm;
+                                  _isObscureConfirm =
+                                      !_isObscureConfirm;
                                 });
                               },
                             ),
@@ -107,16 +153,29 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue[900],
+                            backgroundColor:
+                                Colors.blue[900],
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius:
+                                  BorderRadius.circular(
+                                    8,
+                                  ),
                             ),
                           ),
                           child: Center(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 12),
-                              child: Text('Save New Password',
-                                  style: TextStyle(color: Colors.white)),
+                              padding:
+                                  EdgeInsets.symmetric(
+                                    vertical: 12,
+                                  ),
+                              child: Text(
+                                'Save New Password',
+                                style: TextStyle(
+                                  color:
+                                      Colors
+                                          .white,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -126,7 +185,10 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                             onPressed: () {},
                             child: Text(
                               'Reset password later?',
-                              style: TextStyle(color: Colors.grey),
+                              style: TextStyle(
+                                color:
+                                    Colors.grey,
+                              ),
                             ),
                           ),
                         ),
