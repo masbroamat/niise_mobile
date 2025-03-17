@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:niise_mobile/pages/signup_1_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -257,10 +258,9 @@ class LoginForm extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(
-                context,
-                '/signup1',
-              );
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Signup1Page()),
+                );
             },
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(
@@ -384,9 +384,8 @@ class LoginForm extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 // Add your sign-up navigation logic here
-                Navigator.pushNamed(
-                  context,
-                  '/signup1',
+                Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const Signup1Page()),
                 );
               },
               child: Text(
