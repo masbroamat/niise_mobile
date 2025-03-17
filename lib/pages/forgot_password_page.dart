@@ -22,6 +22,12 @@ class _ForgotPasswordState
   void _changeOption(bool isEmailSelected) {
     setState(() {
       _isEmailSelected = isEmailSelected;
+      // Clear the opposite input field
+      if (isEmailSelected) {
+        phoneNumController.clear();
+      } else {
+        emailController.clear();
+      }
     });
   }
 
@@ -154,8 +160,17 @@ class _ForgotPasswordState
                                 print(
                                   "back button pressed",
                                 );
-                                Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const LoginPage()),);
+                                Navigator.of(
+                                  context,
+                                ).push(
+                                  MaterialPageRoute(
+                                    builder:
+                                        (
+                                          context,
+                                        ) =>
+                                            const LoginPage(),
+                                  ),
+                                );
                               },
                               child: Icon(
                                 Icons.arrow_back,
@@ -354,6 +369,11 @@ class _ForgotPasswordState
                                               key: const ValueKey(
                                                 "email",
                                               ),
+                                              style: TextStyle(
+                                                color:
+                                                    Colors.black,
+                                              ),
+
                                               controller:
                                                   emailController,
                                               keyboardType:
@@ -372,6 +392,10 @@ class _ForgotPasswordState
                                             : TextField(
                                               key: const ValueKey(
                                                 "phone",
+                                              ),
+                                              style: TextStyle(
+                                                color:
+                                                    Colors.black,
                                               ),
                                               controller:
                                                   phoneNumController,
@@ -417,15 +441,23 @@ class _ForgotPasswordState
 
                                   displayEmail();
 
-                                  Navigator.of(context).push(
+                                  Navigator.of(
+                                    context,
+                                  ).push(
                                     MaterialPageRoute(
-                                      builder: (context) => VerificationForgotPassword(),
+                                      builder:
+                                          (
+                                            context,
+                                          ) =>
+                                              VerificationForgotPassword(),
                                       settings: RouteSettings(
-                                        arguments: [email, phone], // Passing email and phone as arguments
+                                        arguments: [
+                                          email,
+                                          phone,
+                                        ], // Passing email and phone as arguments
                                       ),
                                     ),
                                   );
-
                                 },
                                 child: const Text(
                                   'Send Code',
@@ -449,8 +481,17 @@ class _ForgotPasswordState
                                 print(
                                   "go to home page",
                                 );
-                                Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const LoginPage()),);
+                                Navigator.of(
+                                  context,
+                                ).push(
+                                  MaterialPageRoute(
+                                    builder:
+                                        (
+                                          context,
+                                        ) =>
+                                            const LoginPage(),
+                                  ),
+                                );
                               },
                               child: const Text(
                                 'Back to Login Page?',
