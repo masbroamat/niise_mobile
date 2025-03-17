@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Forgot Password',
+      title: 'NIISe Mobile App',
       home: HomePage(),
       routes: {
         '/signup1':
