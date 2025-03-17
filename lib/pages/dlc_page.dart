@@ -18,7 +18,7 @@ class _DlcPageState extends State<DlcPage> {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              "assets/background.png", // Ensure this file is in the assets folder
+              "assets/images/background.png", // Ensure this file is in the assets folder
               fit: BoxFit.cover, // Covers the entire screen
             ),
           ),
@@ -39,7 +39,7 @@ class _DlcPageState extends State<DlcPage> {
                     leading: IconButton(
                       icon: const Icon(Icons.arrow_back),
                       onPressed: () {
-                        // Handle back button press
+                        Navigator.pushNamed(context, '/home');  // Handle back button press
                       },
                     ),
                   ),
