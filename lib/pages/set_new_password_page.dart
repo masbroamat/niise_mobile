@@ -20,7 +20,7 @@ class _SetNewPasswordPageState
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/images/imigresen.png', // Change this to your background image
+              'assets/images/ibu-pejabat-imigresen-malaysia.jpg', // Change this to your background image
               fit: BoxFit.cover,
             ),
           ),
@@ -153,7 +153,12 @@ class _SetNewPasswordPageState
                         ),
                         SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/login',
+                            );
+                          },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 Colors.blue[900],

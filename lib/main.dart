@@ -22,30 +22,30 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'NIISe Mobile App',
-      home: Signup2Page(),
+      title: 'NIISE Mobile',
+      initialRoute: '/',
       routes: {
+        '/': (context) => const LoginPage(),
+        '/home': (context) => const HomePage(),
         '/signup1':
             (context) => const Signup1Page(),
         '/signup2':
             (context) => const Signup2Page(),
         '/signup3':
             (context) => const Signup3Page(),
-        '/login': (context) => const LoginPage(),
-        '/home': (context) => const HomePage(),
+        '/forgot_password':
+            (context) => const ForgotPassword(),
+        '/set_new_password':
+            (context) =>
+                const SetNewPasswordPage(),
+        '/verification_forgot_password':
+            (context) =>
+                const VerificationForgotPassword(),
+        '/dlc': (context) => const DlcPage(),
         '/profile':
             (context) => const ProfilePage(),
         '/settings':
             (context) => const SettingsPage(),
-        '/dlc': (context) => const DlcPage(),
-        '/setnewpassword':
-            (context) =>
-                const SetNewPasswordPage(),
-        '/forgot-password':
-            (context) => const ForgotPassword(),
-        '/verification-forgot-password':
-            (context) =>
-                const VerificationForgotPassword(),
       },
     );
   }

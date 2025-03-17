@@ -256,7 +256,12 @@ class LoginForm extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                '/signup1',
+              );
+            },
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(
                 vertical: 14,
