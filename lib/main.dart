@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NIISE Mobile',
-      initialRoute: '/home',
+      initialRoute: '/settings',
       routes: {
         '/': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),

@@ -62,7 +62,7 @@ class SettingsPageState
           children: [
             _buildSettingsItem(
               Icons.lock_outline,
-              '/forgot-password',
+              '/forgot_password',
               "Change Password",
             ),
             _buildSettingsItem(
@@ -79,7 +79,7 @@ class SettingsPageState
             _buildLanguageOption(),
             _buildSettingsItem(
               Icons.logout,
-              '/login',
+              '/',
               "Log Out",
               iconColor: Colors.red,
             ),
