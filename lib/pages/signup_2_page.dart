@@ -177,6 +177,10 @@ class _ProfileCreationScreenState
                 child: ElevatedButton(
                   onPressed: () {
                     // Handle start button press
+                    Navigator.pushNamed(
+                      context,
+                      '/signup3',
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: lightBlue,
