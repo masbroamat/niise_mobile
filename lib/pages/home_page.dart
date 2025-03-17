@@ -187,7 +187,11 @@ class _HomePageState extends State<HomePage> {
                           Colors.indigo.shade900,
                         ),
                       ),
-                      Container(
+                      GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/dlc'); // Navigate to '/dlc'
+                      },
+                      child: Container(
                         width: 98,
                         height: 98,
                         padding: const EdgeInsets.all(5),
@@ -196,18 +200,21 @@ class _HomePageState extends State<HomePage> {
                           borderRadius: BorderRadius.circular(12),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withValues(alpha:0.4),
+                              color: Colors.black.withOpacity(0.4), // Fixing incorrect withValues()
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset: Offset(0, 3)
+                              offset: Offset(0, 3),
                             ),
                           ],
                         ),
-                        child: _buildQuickAccessCard('Digital Landing\nCard (DLC)',
+                        child: _buildQuickAccessCard(
+                          'Digital Landing\nCard (DLC)',
                           Icons.map_outlined,
                           Colors.indigo.shade900,
                         ),
                       ),
+                    ),
+
                       Container(
                         width: 98,
                         height: 98,
