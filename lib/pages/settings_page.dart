@@ -12,9 +12,23 @@ class SettingsPageState extends State<SettingsPage> {
   int _selectedIndex = 2; // Default to settings
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index != _selectedIndex) {
+      setState(() {
+        _selectedIndex = index;
+      });
+
+      // Navigate to the corresponding page
+      if (index == 0) {
+        Navigator.pushNamed(
+          context,
+          '/home'
+        );
+      } else if (index == 1) {
+        // Add navigation for profile page if needed
+      } else if (index == 2) {
+        // Already on the settings page, do nothing
+      }
+    }
   }
 
   @override
@@ -33,7 +47,7 @@ class SettingsPageState extends State<SettingsPage> {
         ),
         iconTheme: const IconThemeData(color: Colors.indigo),
       ),
-      body: Container(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
@@ -46,34 +60,51 @@ class SettingsPageState extends State<SettingsPage> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 40.0),// Add spacing from bottom
-        child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 10,
-                spreadRadius: 2,
-              ),
-            ],
+      bottomNavigationBar: _buildBottomNavBar(),
+    );
+  }
+
+  Widget _buildBottomNavBar() {
+    return Container(
+      height: 60,
+      margin: const EdgeInsets.only(bottom: 20, left: 20, right: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 40),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10,
+            spreadRadius: 2,
           ),
-          child: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.blue,
-            unselectedItemColor: Colors.grey,
-            onTap: _onItemTapped,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildNavBarItem(Icons.home, 0),
+          _buildNavBarItem(Icons.person_outline, 1),
+          _buildNavBarItem(Icons.settings_outlined, 2),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavBarItem(IconData icon, int index) {
+    return GestureDetector(
+      onTap: () => _onItemTapped(index), // Correct index handling
+      child: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: _selectedIndex == index ? Colors.blue.shade100 : Colors.transparent,
+        ),
+        child: Icon(
+          icon,
+          color: _selectedIndex == index ? Colors.blue.shade800 : Colors.grey,
+          size: 28,
         ),
       ),
     );
@@ -109,8 +140,6 @@ class SettingsPageState extends State<SettingsPage> {
     );
   }
 
- 
-
   Widget _buildLanguageOption() {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -123,4 +152,3 @@ class SettingsPageState extends State<SettingsPage> {
     );
   }
 }
-

@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:niise_mobile/pages/settings_page.dart';
+
 
 
 
@@ -105,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                                 'Status: ',
                                 style: TextStyle(
                                   fontFamily: 'Ramabhadra',
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold
                                 ),
@@ -114,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                                 'NO RESTRICTION',
                                 style: TextStyle(
                                   fontFamily: 'Ramabhadra',
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.green,
                                   fontWeight: FontWeight.bold
                                 ),
@@ -147,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                   //Quick Access
                   //Quick Access
                   //Quick Access
-                  SizedBox(height: 35),
+                  SizedBox(height: 5),
                   Row(
                     children: [
                       Text('Quick Access', 
@@ -165,8 +167,8 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        width: 120,
-                        height: 120,
+                        width: 98,
+                        height: 98,
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -186,8 +188,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Container(
-                        width: 120,
-                        height: 120,
+                        width: 98,
+                        height: 98,
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -207,8 +209,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Container(
-                        width: 120,
-                        height: 120,
+                        width: 98,
+                        height: 98,
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -239,13 +241,13 @@ class _HomePageState extends State<HomePage> {
                   // Second Row
 
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal:60),
+                    padding: const EdgeInsets.symmetric(horizontal:50),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          width: 120,
-                          height: 120,
+                          width: 98,
+                          height: 98,
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -267,8 +269,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Container(
-                          width: 120,
-                          height: 120,
+                          width: 98,
+                          height: 98,
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -364,7 +366,12 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       _buildNavBarItem(Icons.home, isSelected: true),
                       _buildNavBarItem(Icons.person_outline),
-                      _buildNavBarItem(Icons.settings_outlined),
+                      _buildNavBarItem(Icons.settings_outlined, onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SettingsPage()),
+                        );
+                      }),
                     ],
                   ),
                 ),
@@ -441,8 +448,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildNavBarItem(IconData icon, {bool isSelected = false}) {
-    return Container(
+  Widget _buildNavBarItem(IconData icon, {bool isSelected = false, VoidCallback? onTap}) {
+  return GestureDetector(
+    onTap: onTap, // Handle click event
+    child: Container(
       width: 40,
       height: 40,
       decoration: BoxDecoration(
@@ -454,6 +463,7 @@ class _HomePageState extends State<HomePage> {
         color: isSelected ? Colors.blue.shade800 : Colors.grey,
         size: 28,
       ),
+    ),
     );
   }
 }
@@ -479,7 +489,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 40, color: color),
+          Icon(icon, size: 35, color: color),
           const SizedBox(height: 5),
           Text(
             title,
