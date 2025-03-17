@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class Signup1Page extends StatefulWidget {
+  const Signup1Page({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _Signup1PageState extends State<Signup1Page> {
   int? selectedIndex;
 
   @override
